@@ -15,7 +15,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role', // Ajouté ici
+        'role',  // Ajout du champ role
     ];
 
     protected $hidden = [
@@ -23,22 +23,20 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
 
     public function messages()
     {
         return $this->hasMany(Message::class);
     }
 
-    // Vérifie si l'utilisateur est un administrateur
-    public function isAdmin(): bool
+    // Vérifier si l'utilisateur est un administrateur
+    public function isAdmin()
     {
         return $this->role === 'admin';
     }
 }
+

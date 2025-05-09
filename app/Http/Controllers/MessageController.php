@@ -32,4 +32,18 @@ class MessageController extends Controller
 {
     return response()->json($channel->messages()->with('user')->get());
 }
+public function destroy($messageId)
+{
+    $message = Message::findOrFail($messageId);
+
+    // Vérification du rôle de l'utilisateur
+    if (auth()->user()->role !== 'admin') {
+        abort(403, 'Accès non autorisé');
+    }
+
+    $message->delete();
+
+    return redirect()->route('channels.show', $message->channel_id);
+}
+
 }

@@ -6,12 +6,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Cache Store
+    | Système de cache par défaut
     |--------------------------------------------------------------------------
     |
-    | This option controls the default cache store that will be used by the
-    | framework. This connection is utilized if another isn't explicitly
-    | specified when running a cache operation inside the application.
+    | Cette option définit le système de cache par défaut utilisé par Laravel.
+    | Si aucun système n'est précisé dans une opération de cache, c'est celui-ci
+    | qui sera utilisé.
     |
     */
 
@@ -19,15 +19,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Cache Stores
+    | Systèmes de cache disponibles
     |--------------------------------------------------------------------------
     |
-    | Here you may define all of the cache "stores" for your application as
-    | well as their drivers. You may even define multiple stores for the
-    | same cache driver to group types of items stored in your caches.
+    | Tu peux définir ici tous les "stores" (moyens de stockage) de cache pour
+    | ton application ainsi que leur pilote associé (driver).
     |
-    | Supported drivers: "array", "database", "file", "memcached",
-    |                    "redis", "dynamodb", "octane", "null"
+    | Pilotes supportés : "array", "database", "file", "memcached",
+    |                     "redis", "dynamodb", "octane", "null"
     |
     */
 
@@ -35,7 +34,7 @@ return [
 
         'array' => [
             'driver' => 'array',
-            'serialize' => false,
+            'serialize' => false, // false = stockage direct (non sérialisé)
         ],
 
         'database' => [
@@ -60,7 +59,7 @@ return [
                 env('MEMCACHED_PASSWORD'),
             ],
             'options' => [
-                // Memcached::OPT_CONNECT_TIMEOUT => 2000,
+                // Exemple : Memcached::OPT_CONNECT_TIMEOUT => 2000,
             ],
             'servers' => [
                 [
@@ -94,15 +93,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Cache Key Prefix
+    | Préfixe des clés de cache
     |--------------------------------------------------------------------------
     |
-    | When utilizing the APC, database, memcached, Redis, and DynamoDB cache
-    | stores, there might be other applications using the same cache. For
-    | that reason, you may prefix every cache key to avoid collisions.
+    | Pour éviter les conflits de clés entre différentes applications qui
+    | utilisent le même système de cache (comme Redis, base de données, etc.),
+    | tu peux ajouter un préfixe unique à toutes les clés de cache ici.
     |
     */
 
     'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache_'),
 
 ];
+

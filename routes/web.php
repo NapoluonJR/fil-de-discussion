@@ -22,9 +22,22 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/channels', [ChannelController::class, 'index'])->name('channels.index');
     Route::get('/channels/create', [ChannelController::class, 'create'])->name('channels.create');
     Route::post('/channels', [ChannelController::class, 'store'])->name('channels.store');
+    
+    // Affichage d'un canal
     Route::get('/channels/{channel}', [ChannelController::class, 'show'])->name('channels.show');
+
+    Route::delete('/channels/{channel}', [ChannelController::class, 'destroy'])->name('channels.destroy');
 
     // Messages
     Route::post('/channels/{channel}/messages', [MessageController::class, 'store'])->name('messages.store');
     Route::get('/channels/{channel}/messages', [MessageController::class, 'fetch'])->name('messages.fetch');
+    Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+
+    // Mentions légales / Politique de confidentialité
+    Route::view('/mentions-legales', 'mentions-legales')->name('mentions');
+    Route::view('/politique-confidentialite', 'politique-confidentialite')->name('confidentialite');
+
+    Route::get('/contact', [HomeController::class, 'showContactForm'])->name('contact.form');
+    Route::post('/contact', [HomeController::class, 'submitContactForm'])->name('contact.submit');
+
 });

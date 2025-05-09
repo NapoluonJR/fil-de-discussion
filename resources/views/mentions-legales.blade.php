@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Créer un canal</title>
+    <title>Mentions légales</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -14,27 +14,32 @@
             <a href="{{ route('register.form') }}">Inscription</a>
         </div>
     </header>
+
     <div class="container">
-        <h1>Créer un nouveau canal</h1>
+        <h1>Mentions légales</h1>
+        <section>
+            <h2>1. Éditeur du site</h2>
+            <p>Le site <strong>Nom du site</strong> est édité par :</p>
+            <ul>
+                <li><strong>Nom de l'éditeur</strong></li>
+                <li><strong>Adresse</strong></li>
+                <li><strong>Email</strong></li>
+            </ul>
 
-        @if ($errors->any())
-            <div style="color: red;">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+            <h2>2. Hébergement</h2>
+            <p>Le site est hébergé par :</p>
+            <ul>
+                <li><strong>Nom de l'hébergeur</strong></li>
+                <li><strong>Adresse de l'hébergeur</strong></li>
+                <li><strong>Contact</strong></li>
+            </ul>
 
-        <form method="POST" action="{{ route('channels.store') }}">
-            @csrf
-            <label for="name">Nom du canal :</label>
-            <input type="text" name="name" id="name" value="{{ old('name') }}" required>
-            <button type="submit">Créer</button>
-        </form>
+            <h2>3. Propriété intellectuelle</h2>
+            <p>Le contenu du site (textes, images, logos, etc.) est la propriété de l'éditeur du site, sauf mention contraire.</p>
 
-        <a href="{{ route('channels.index') }}">Retour à la liste</a>
+            <h2>4. Loi applicable</h2>
+            <p>Le site est soumis à la législation française. Tout litige sera porté devant les juridictions compétentes en France.</p>
+        </section>
     </div>
 
 <footer class="site-footer">

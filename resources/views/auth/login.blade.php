@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Connexion</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <header class="site-header">
@@ -43,5 +44,19 @@
 
         <p>Pas encore inscrit ? <a href="{{ route('register.form') }}">Créer un compte</a></p>
     </div>
+
+<footer class="site-footer">
+        <a href="{{ route('mentions') }}">
+            <i class="fas fa-gavel"></i> Mentions légales
+        </a>
+        <a href="{{ route('confidentialite') }}">
+            <i class="fas fa-user-secret"></i> Politique de confidentialité
+        </a>
+        <a href="{{ route('contact.form') }}">
+            <i class="fas fa-envelope"></i> Contact
+        </a>
+        <p>© {{ date('Y') }} NapoluonChat — Réalisé dans le cadre du BTS SIO SLAM</p>
+</footer>
+
 </body>
 </html>

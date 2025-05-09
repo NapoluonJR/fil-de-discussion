@@ -1,14 +1,20 @@
 /* Global Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+}
 
-/* Container for the entire page */
+/* Container for the main content */
 .container {
     background-color: #fff;
     padding: 30px;
@@ -17,9 +23,9 @@ body {
     max-width: 500px;
     width: 100%;
     text-align: center;
-    margin: 40px auto; /* <-- centre verticalement avec un espace sous le header */
+    margin: 40px auto;
+    /* Retiré le flex-grow ici pour éviter l’étirement inutile */
 }
-
 
 /* Title */
 h1 {
@@ -106,7 +112,7 @@ form {
     margin-top: 20px;
 }
 
-/* Adjustments for mobile responsiveness */
+/* Responsive Adjustments */
 @media (max-width: 600px) {
     .container {
         padding: 20px;
@@ -129,12 +135,17 @@ form {
         font-size: 14px;
     }
 }
+
+/* Header */
 .site-header {
     background-color: #4A90E2;
     color: white;
     width: 100%;
     padding: 12px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header-content {
@@ -142,6 +153,7 @@ form {
     margin: 0 auto;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 20px;
     padding: 0 20px;
 }
@@ -150,9 +162,117 @@ form {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 15px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header-content a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #ffbf47; /* Changement ici pour l'orange */
+    transition: width 0.3s ease;
 }
 
 .header-content a:hover {
-    text-decoration: underline;
+    color: #ffbf47; /* Couleur orange lors du survol */
+    transform: scale(1.1); /* Légère animation de zoom */
 }
 
+.header-content a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .header-content a {
+        font-size: 14px;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #4A90E2;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    margin-top: auto; /* Important pour que le footer colle en bas */
+    transition: background-color 0.3s ease-in-out;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #ffbf47; /* Couleur du trait de survol */
+    transition: width 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffbf47; /* Couleur du texte au survol */
+    transform: scale(1.1); /* Zoom léger sur le lien */
+}
+
+footer a:hover::after {
+    width: 100%;
+}
+
+footer p {
+    color: white;
+    font-size: 12px;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+footer a:focus {
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    footer {
+        padding: 10px 0;
+    }
+
+    footer a {
+        font-size: 12px;
+        margin: 0 8px;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}
+
+/* Animation de fade-in pour le texte */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
