@@ -45,7 +45,7 @@
         <p>Pas encore inscrit ? <a href="{{ route('register.form') }}">Créer un compte</a></p>
     </div>
 
-<footer class="site-footer">
+<footer class="footer">
         <a href="{{ route('mentions') }}">
             <i class="fas fa-gavel"></i> Mentions légales
         </a>

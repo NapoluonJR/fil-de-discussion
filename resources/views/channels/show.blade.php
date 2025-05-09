@@ -63,7 +63,7 @@
     </form>
 </div>
 
-<footer class="site-footer">
+<footer class="footer">
         <a href="{{ route('mentions') }}">
             <i class="fas fa-gavel"></i> Mentions légales
         </a>
