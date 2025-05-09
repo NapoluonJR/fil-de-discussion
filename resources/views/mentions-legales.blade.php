@@ -52,7 +52,7 @@
         <a href="{{ route('contact.form') }}">
             <i class="fas fa-envelope"></i> Contact
         </a>
-        <p>© {{ date('Y') }} NapoluonChat — Réalisé dans le cadre du BTS SIO SLAM</p>
+        <p>© {{ date('Y') }} NapoluonChat — Tous droits réservés</p>
 </footer>
 
 </body>
